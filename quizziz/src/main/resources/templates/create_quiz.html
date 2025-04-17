@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+        input[type="submit"] {
+            background-color: #2b7a78;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #205e5d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Create a New Quiz</h2>
+        <form th:action="@{/admin/create_quiz}" method="post" th:object="${quiz}">
+            <label>Quiz Title:</label>
+            <input type="text" th:field="*{title}" placeholder="Enter quiz title" required/>
+
+            <label>Description:</label>
+            <textarea th:field="*{description}" placeholder="Enter quiz description" rows="4" required></textarea>
+
+            <input type="submit" value="Create Quiz"/>
+        </form>
+    </div>
+
+</body>
+</html>

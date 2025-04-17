@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz App</title>
+    <style>
+        .create-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2b7a78;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Quiz App</h1>
+
+    <!-- Show this button only to ADMIN -->
+    <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+        <a class="create-button" th:href="@{/admin/create_quiz}">Create Quiz</a>
+        <a class="create-button" th:href="@{/admin/create_question}">Create Question</a>
+    </div>
+
+</body>
+</html>

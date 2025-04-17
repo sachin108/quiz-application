@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Question</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+
+        input[type="submit"] {
+            background-color: #2b7a78;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #205e5d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Create a New Question</h2>
+    <form th:action="@{/admin/create_question}" method="post" th:object="${questionForm}">
+        <label>Question Text:</label>
+        <input type="text" th:field="*{text}" placeholder="Enter question" required/>
+
+        <label>Option 1:</label>
+        <input type="text" th:field="*{option1}" required/>
+
+        <label>Option 2:</label>
+        <input type="text" th:field="*{option2}" required/>
+
+        <label>Option 3:</label>
+        <input type="text" th:field="*{option3}" required/>
+
+        <label>Option 4:</label>
+        <input type="text" th:field="*{option4}" required/>
+
+        <label>Correct Option:</label>
+        <select th:field="*{correctOption}">
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+        </select>
+
+        <input type="submit" value="Save Question"/>
+    </form>
+</div>
+
+</body>
+</html>
